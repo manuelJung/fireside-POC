@@ -1,12 +1,24 @@
 {
   "name": "fireside",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "packageManager": "yarn@1.22.21",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check-types": "turbo check-types",
+    "build": "turbo check-types build",
+    "dev:example": "turbo run dev --filter=example"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "workspaces": [
+    "packages/*",
+    "example"
+  ],
+  "devDependencies": {
+    "turbo": "^2.0.6"
+  }
 }
