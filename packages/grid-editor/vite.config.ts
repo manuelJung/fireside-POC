@@ -18,10 +18,14 @@ export default defineConfig({
     copyPublicDir: false,
     rollupOptions: {
       external: ['react', 'react/jsx-runtime'],
+      output: {
+        assetFileNames: 'assets/[name][extname]',
+        entryFileNames: '[name].js',
+      },
     },
     lib: {
       entry: resolve(__dirname, 'lib/main.tsx'),
       formats: ['es'],
-    }
+    },
   }
 })
