@@ -1,8 +1,10 @@
+type Props = {
+  onClick: (msg:string) => void
+}
 
-
-export default function ComponentViewer () {
+export default function ComponentViewer (props:Props) {
   return (
-    <div>
+    <div onClick={() => props.onClick('my inner msg')}>
       ComponentViewer
     </div>
   )

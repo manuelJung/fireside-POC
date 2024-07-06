@@ -7,14 +7,17 @@ export default function ComponentEditor () {
   const $iframe = React.useRef<HTMLIFrameElement>(null)
   const [ready, setReady] = React.useState(false)
 
+  const handleClick = (msg:string) => console.log('from inner', msg)
+
   
   const Portal = () => {
     const doc = $iframe.current?.contentWindow?.document
     if(!doc) return null
-    console.log(doc.body.innerHTML)
+    const rootEl = doc.getElementById("viewer")
+    if(!rootEl) return null
     return ReactDOM.createPortal(
-      <div />,
-      doc.getElementById("result")!
+      <ComponentViewer onClick={handleClick}/>,
+      rootEl
    )
   }
 
