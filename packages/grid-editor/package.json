@@ -12,6 +12,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "component-editor": "*"
+  },
   "devDependencies": {
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
