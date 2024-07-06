@@ -1,11 +1,37 @@
 import * as React from 'react'
+import ReactDOM from 'react-dom'
+import ComponentViewer from 'component-viewer'
 
-type Props = {
-  label: string
-}
 
-export function DemoComponent (props:Props) {
-  const [count, setCount] = React.useState(0)
+export default function ComponentEditor () {
+  const $iframe = React.useRef<HTMLIFrameElement>(null)
+  const [ready, setReady] = React.useState(false)
+
   
-  return <div onClick={() => setCount(n => n+1)}>{props.label} - Hello World {count}</div>
+  const Portal = () => {
+    const doc = $iframe.current?.contentWindow?.document
+    if(!doc) return null
+    console.log(doc.body.innerHTML)
+    return ReactDOM.createPortal(
+      <div />,
+      doc.getElementById("result")!
+   )
+  }
+
+
+  return (
+    <div>
+      ComponentEditor
+
+      <hr/>
+
+      <iframe
+        ref={$iframe} 
+        srcDoc="<div id='viewer'></div>"
+        onLoad={() => setReady(true)}
+      />
+
+      {ready && <Portal />}
+    </div>
+  )
 }

@@ -1,18 +1,19 @@
-import * as React from 'react'
-import * as c from 'component-editor'
+import * as React from "react"
+import ComponentEditor from "component-editor"
 
-type Props = {
-  label: string
-}
 
-export function DemoComponent (props:Props) {
-  const [count, setCount] = React.useState(0)
-  
+export default function GridEditor () {
+  const [showComponentEditor, setShowComponentEditor] = React.useState(false)
   return (
     <div>
-      <div onClick={() => setCount(n => n+1)}>{props.label} - Hello World {count}</div>
+      GridEditor
       <hr/>
-      <c.DemoComponent label="Component Editor"/>
+
+      <button onClick={() => setShowComponentEditor(!showComponentEditor)}>Toggle Component Editor</button>
+
+      <hr/>
+
+      {showComponentEditor && <ComponentEditor />}
     </div>
   )
 }
