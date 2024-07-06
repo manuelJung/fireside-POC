@@ -1,3 +1,4 @@
+'use client'
 
 export default function Component4() {
   return (
